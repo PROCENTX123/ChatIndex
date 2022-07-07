@@ -11,23 +11,24 @@ var sentence = JSON.parse(rawdata);
 
 
 
-//перевод в нижний регистр
-//let str_low = str.toLowerCase();
-//console.log(str_low);
-
 //поиск предложений по строке
-// const str = readline.question("Введите строку: ");
+const str = readline.question("Введите строку: ").toLowerCase();//поиск только по нижнему регистру
+//console.log(str);
 
-//console.time('Firstway'); //начало таймера
-  // for (var i = 0; i < 100000; i++){
-  //   let str_sentence = sentence.words[i];
-  //   if (str_sentence.indexOf(str) != -1){
-  //     console.log(str_sentence);
-  //   }
-  // }
-//console.timeEnd('Firstway'); //конец таймера
 
-console.log(bitap('космический', 'комич', 2));
+console.time('Firstway'); //начало таймера
+  for (var i = 0; i < 100000; i++){
+    let str_sentence = sentence.words[i].toLowerCase();
+    //console.log(str_sentence);
+    if (bitap(str_sentence, str, 1).length != 0) {
+      //console.log(str_sentence);
+    }
+  }
+console.timeEnd('Firstway'); //конец таймера
+
+// let str_c = 'воздевать'
+// console.log(bitap(str_c, str, 2));
+
 
 
 
