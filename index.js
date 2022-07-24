@@ -82,7 +82,7 @@ let df = new dfd.DataFrame(obj_data);
 let map_word = new Map();
 map_word.set(arr_words[0], [])//сделано для того что бы начались итерации по множеству for (n of set)
 console.time('Firstway')
-for (var o = 1; o < 5000; o++){//вместо 5000 поставить m
+for (var o = 1; o < 50000; o++){//вместо 5000 поставить m
   const set = map_word.keys()
   for (n of set){
     if (ngram.compare(arr_words[o], n) > 0.62){
@@ -99,23 +99,27 @@ for (var o = 1; o < 5000; o++){//вместо 5000 поставить m
   }
   //console.log(map_word);
 }
+//console.log(map_word);
+console.log(map_word.size);
 console.timeEnd("Firstway")
-
 
 
 //как доставать ключи из словаря
 // map_word.set(1, )
 // map_word.set(2, [1,3,4,5])
 // map_word.set(3, [0,1,2,3,4,5])
+// console.log(map_word.size);
 // console.log(map_word.get(1));
 // const ar = 1
 // let arr_get = map_word.get(1)
 // arr_get.add(ar)
 // console.log(arr_get);
-const set = map_word.keys()
-alert(set.size);
-//console.log(map_word.size);
+// const set = map_word.keys()
+// var counter = 0
+// //console.log(map_word.size);
 // for (n of set){
-//   console.log(n);
+//   //console.log(n);
+//   counter++
 // }
+// console.log(counter);
 // console.log(ngram.compare('привет', 'првет'));//0.62
