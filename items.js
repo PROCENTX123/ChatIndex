@@ -1,3 +1,0 @@
-var myitems = {}
-
-export {myitems};
