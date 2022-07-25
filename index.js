@@ -55,7 +55,7 @@ arr_maximum_last_compare = Array(m).fill(0);
 //составляю мапу слова->предложения
 var map_word_sentence = new Map();
 map_word_sentence.set(arr_words[0], [arr_index_sentence[0]]);
-console.time('Firstway')
+// console.time('Firstway')
 for (var d = 1; d < 1000; d++ ){
   const set_sentence = map_word_sentence.keys()
   var flag_sentence = false
@@ -93,7 +93,7 @@ let df = new dfd.DataFrame(obj_data);
 //df.print()
 
 // составляю мапу слова->похожие слова
-let map_word = new Map();
+var map_word = new Map();
 map_word.set(arr_words[0], [])//сделано для того что бы начались итерации по множеству for (n of set)
 for (var o = 1; o < 1000; o++){//вместо 5000 поставить m
   const set_words = map_word.keys()
@@ -107,18 +107,20 @@ for (var o = 1; o < 1000; o++){//вместо 5000 поставить m
       arr_push.push(arr_words[o])
       map_word.set(n, arr_push)
     }else{
-      map_word.set(arr_words[o], []);
+      map_word.set(arr_words[o], [arr_words[o]]);
     }
 
   }
   //console.log(map_word);
 }
 // console.log(map_word);
+// console.log(map_word_sentence);
 // console.log(map_word.size);
 // console.log(map_word_sentence.size);
 // console.timeEnd("Firstway")
-
 export {map_word, map_word_sentence};
+
+
 //как доставать ключи из словаря
 // map_word.set(1, )
 // map_word.set(2, [1,3,4,5])
@@ -138,3 +140,9 @@ export {map_word, map_word_sentence};
 // }
 // console.log(counter);
 // console.log(ngram.compare('жневский', 'женский'));//0.62
+
+// const str = readline.question("Введите строку: ").toLowerCase();//поиск только по нижнему регистру
+// var map = new Map()
+// map.set('колется', 123)
+// map.set('лол', 321)
+// console.log(map.has(str));

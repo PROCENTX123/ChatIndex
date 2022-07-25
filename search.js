@@ -19,14 +19,14 @@ let count = 0;
 for(let key in sentence.words){
   count++;
 }
-console.log(map_word_sentence);
+
 //поиск подстроки в строке
 // const str_i = readline.question("Введите строку: ");
 // let str = 'Норси-транс компания состоящая из людей';
 // console.log(str.indexOf(str_i));
 
 // //реализация битапа
-// const str = readline.question("Введите строку: ").toLowerCase();//поиск только по нижнему регистру
+const str = readline.question("Введите строку: ").toLowerCase();//поиск только по нижнему регистру
 // console.time('Firstway'); //начало таймера
 //   for (var i = 0; i < count; i++){
 //     let str_sentence = sentence.words[i].toLowerCase();
@@ -55,3 +55,33 @@ console.log(map_word_sentence);
 //   }
 // }
 // console.timeEnd('Firstway');
+// console.log(map_word);
+var finish_array_sentence = []
+// console.log(str);
+
+//индексированная ngram-а
+console.time('Firstway')
+function search(str){
+  if (map_word.has(str)){
+    let words_set = map_word.get(str)
+    // console.log(words_set);
+    for (var c of words_set){
+      if (map_word_sentence.has(c)){
+        // console.log('вошло');
+        let sentence_set = map_word_sentence.get(c)
+        for(var search of sentence_set){
+          // console.log(search);
+          finish_array_sentence.push(search)
+        }
+      }
+    }
+  }
+}
+//самовольный
+search(str);
+// console.log(finish_array_sentence);
+for (var a of finish_array_sentence){
+  // console.log(a);
+  console.log(sentence.words[a]);
+}
+console.timeEnd("Firstway")
