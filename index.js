@@ -1,13 +1,11 @@
-import fs from 'fs';
 import readline from 'readline-sync'
 import NGrams from 'ngrams-search';
-
+import {x} from './data.js'
 //биграм
 var ngram = new NGrams(2);
 
 //чтение данных
-var rawdata = fs.readFileSync('data.json');
-var sentence = JSON.parse(rawdata);
+var sentence = x
 
 //количество элементов в массиве
 Array.prototype.count = function(){

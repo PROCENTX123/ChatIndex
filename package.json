@@ -2,10 +2,7 @@
   "type": "module",
   "dependencies": {
     "bitap": "^1.0.1",
-    "crc-32": "^1.2.2",
-    "danfojs-node": "^1.1.1",
     "dataframe-js": "github:Gmousse/dataframe-js",
-    "n-gram": "^2.0.1",
     "ngrams-search": "^0.0.4",
     "readline-sync": "^1.4.10"
   }
