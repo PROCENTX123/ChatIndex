@@ -1,4 +1,5 @@
 import {bigram, trigram, nGram} from 'n-gram';
+import {map_word, map_word_sentence} from './index.js'
 //import { grams } from './n-gram/index.js'
 import fs from 'fs';
 import readline from 'readline-sync'
@@ -18,7 +19,7 @@ let count = 0;
 for(let key in sentence.words){
   count++;
 }
-
+console.log(map_word_sentence);
 //поиск подстроки в строке
 // const str_i = readline.question("Введите строку: ");
 // let str = 'Норси-транс компания состоящая из людей';
