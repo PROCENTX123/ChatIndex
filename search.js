@@ -51,7 +51,7 @@ function index_search(map_word, map_word_sentence, str){
     let words_set = map_word.keys(str)
     for( let runner_words of words_set){
         let n_gram_index = n.compare(str, runner_words)
-        if (n_gram_index > 0.62){
+        if (n_gram_index > 0.55){
           let words_set = map_word.get(runner_words)
           for (let runner_words_index of words_set){
             let sentence_set = map_word_sentence.get(runner_words_index)
