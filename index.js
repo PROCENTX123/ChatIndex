@@ -1,11 +1,7 @@
 import readline from 'readline-sync'
 import NGrams from 'ngrams-search';
 import {x} from './data.js'
-//биграм
-var ngram = new NGrams(2);
 
-//чтение данных
-var sentence = x
 
 //количество элементов в массиве
 Array.prototype.count = function(){
@@ -16,36 +12,42 @@ Array.prototype.count = function(){
     return result;
 }
 
-//количество сообщений
-var count_for = sentence.words.count();
+function index_create(sentence){
+  //биграм
+  let ngram = new NGrams(2);
 
-//создание массивов для датафрейма
-var arr_sentence = [];
-var arr_words = [];
-var arr_index_sentence = [];
+  //чтение данных
+  let sentence_for_index = x
 
-//создание массива сообщений со словами разделенными по пробелу
-for (var i = 0; i < count_for; i++){
-  var str_sentence = sentence.words[i].toLowerCase();
-  var arr = str_sentence.split(' ');
-  arr_sentence.push(arr)
-}
+  //количество сообщений
+  var count_for = sentence_for_index.words.count();
 
-//создание отдельно массива слов и массива в порядка предложений в котором находится слово
-for (var j = 0; j < count_for; j++){
-  var n = arr_sentence[j].count();
-  for (var k = 0; k < n; k++){
-    arr_words.push(arr_sentence[j][k]);
-    arr_index_sentence.push(j);
+  //создание массивов для датафрейма
+  var arr_sentence = [];
+  var arr_words = [];
+  var arr_index_sentence = [];
+
+  //создание массива сообщений со словами разделенными по пробелу
+  for (var i = 0; i < count_for; i++){
+    var str_sentence = sentence_for_index.words[i].toLowerCase();
+    var arr = str_sentence.split(' ');
+    arr_sentence.push(arr)
   }
-}
 
-//общее количество слов
-var m = arr_words.count();
+  //создание отдельно массива слов и массива в порядка предложений в котором находится слово
+  for (var j = 0; j < count_for; j++){
+    var n = arr_sentence[j].count();
+    for (var k = 0; k < n; k++){
+      arr_words.push(arr_sentence[j][k]);
+      arr_index_sentence.push(j);
+    }
+  }
+
+  //общее количество слов
+  var m = arr_words.count();
 
 
-//составляю мапу слова->предложения
-function make_map_words_sentence(arr_words, arr_index_sentence){
+  //составляю мапу слова->предложения
   var map_word_sentence = new Map();
   map_word_sentence.set(arr_words[0], [arr_index_sentence[0]]);
   for (var d = 1; d < 1000; d++ ){
@@ -59,12 +61,8 @@ function make_map_words_sentence(arr_words, arr_index_sentence){
       map_word_sentence.set(arr_words[d], [arr_index_sentence[d]])
     }
   }
-  return map_word_sentence
-}
 
-
-// составляю мапу слова->похожие слова
-function make_map_words_similar_words(arr_words){
+  // составляю мапу слова->похожие слова
   var map_word = new Map();
   map_word.set(arr_words[0], [])//сделано для того что бы начались итерации по множеству for (n of set)
   for (var o = 1; o < 1000; o++){//вместо 5000 поставить m
@@ -83,12 +81,9 @@ function make_map_words_similar_words(arr_words){
       }
     }
   }
-  return map_word
+  let arr_map = []
+  arr_map.push(map_word)
+  arr_map.push(map_word_sentence)
+  return arr_map
 }
-
-var map_word_sentence = make_map_words_sentence(arr_words, arr_index_sentence)
-var map_word = make_map_words_similar_words(arr_words)
-
-
-console.log(map_word_sentence);
-export {map_word, map_word_sentence};
+export {index_create}
